@@ -1,17 +1,18 @@
 public class Task {
     private String task;
-    private String desc;
+    private int deadline;
     private String category;
     private boolean isCompleted;
 
     public Task(String task){
         this.task = task;
+        this.deadline = 0;
         this.isCompleted = false;
     }
 
-    public Task(String task, String desc){
+    public Task(String task, int deadline) {
         this.task = task;
-        this.desc = desc;
+        this.deadline = deadline;
         this.isCompleted = false;
     }
 
@@ -31,19 +32,19 @@ public class Task {
         this.category = category;
     }
 
-    public String getDesc(){
-        return desc;
-    }
-
-    public void setDesc(String desc){
-        this.desc = desc;
-    }
-
     public boolean getCompletion(){
         return isCompleted;
     }
 
     public void setCompletion(boolean isCompleted){
         this.isCompleted = isCompleted;
+    }
+    
+    public int getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(int deadline) {
+        this.deadline = deadline;
     }
 }
