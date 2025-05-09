@@ -2,18 +2,25 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        TaskList user1 = new TaskList();
+        System.out.println("*******************************");
+        System.out.println("          TODO - LIST          ");
+        System.out.println("*******************************");
+        System.out.println();
+        
+        User user1 = new User();
+        TaskList work = new TaskList();
 
-        user1.addTask(new Task("run"));
-        user1.addTask(new Task("run2"));
-        user1.addTask(new Task("run3"));
-        user1.addTask(new Task("run4"));
-        user1.addTask(new Task("run5"));
 
-        user1.deleteTask(2);
-        user1.completeTask(2);
+        work.addTask(new Task("run"));
+        work.addTask(new Task("run2"));
+        work.addTask(new Task("run3"));
+        work.addTask(new Task("run4"));
+        work.addTask(new Task("run5"));
 
-        ArrayList<Task> testList = user1.getTaskList();
+        work.deleteTask(2);
+        work.completeTask(2);
+
+        ArrayList<Task> testList = work.getTaskList();
 
         for(Task task : testList){ 
             System.out.println(task.getTask() + " " + task.getCompletion());
