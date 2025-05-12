@@ -42,6 +42,8 @@ public class TaskList {
     }
 
     public void printTaskList() {
+        orderTaskList();
+        
         System.out.println(taskList.get(0).getDeadline());
         System.out.println(" -" + taskList.get(0));
 

@@ -20,8 +20,6 @@ public class Main {
         work.deleteTask(2);
         work.completeTask(2);
 
-        work.orderTaskList();
-
         work.printTaskList();
     }
 }
