@@ -27,4 +27,30 @@ public class TaskList {
         taskList.get(index).setCompletion(true);
     }
 
+    public void orderTaskList() {
+        for (int i = 0; i < taskList.size() - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < taskList.size(); j++) {
+                if (taskList.get(j).getDeadline() < taskList.get(minIndex).getDeadline()) {
+                    minIndex = j;
+                }
+            }
+            Task temp = taskList.get(i);
+            taskList.set(i, taskList.get(minIndex));
+            taskList.set(minIndex, temp);
+        }
+    }
+
+    public void printTaskList() {
+        System.out.println(taskList.get(0).getDeadline());
+        System.out.println(" -" + taskList.get(0));
+
+        for(int i = 1; i < taskList.size(); i++){
+            if(taskList.get(i).getDeadline() != taskList.get(i-1).getDeadline()){
+                System.out.println();
+                System.out.println(taskList.get(i).getDeadline());
+            }
+            System.out.println(" -" + taskList.get(i));
+        }
+    }
 }

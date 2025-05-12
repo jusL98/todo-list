@@ -47,4 +47,8 @@ public class Task {
     public void setDeadline(int deadline) {
         this.deadline = deadline;
     }
+
+    public String toString(){
+        return task + " | " + deadline + " | " + category + " | " + isCompleted;
+    }
 }

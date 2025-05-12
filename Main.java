@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("*******************************");
@@ -9,19 +7,21 @@ public class Main {
         
         TaskList work = new TaskList();
 
-        work.addTask(new Task("run"));
-        work.addTask(new Task("run2"));
-        work.addTask(new Task("run3"));
-        work.addTask(new Task("run4"));
-        work.addTask(new Task("run5"));
+        work.addTask(new Task("go to gym",2));
+        work.addTask(new Task("do homework",0));
+        work.addTask(new Task("do dishes",1));
+        work.addTask(new Task("clean room",8));
+        work.addTask(new Task("make dinner",5));
+        work.addTask(new Task("go for jog", 0));
+        work.addTask(new Task("submit application",0));
+        work.addTask(new Task("do pushups", 0));
+        work.addTask(new Task("read", 0));
 
         work.deleteTask(2);
         work.completeTask(2);
 
-        ArrayList<Task> testList = work.getTaskList();
+        work.orderTaskList();
 
-        for(Task task : testList){ 
-            System.out.println(task.getTask() + " " + task.getCompletion());
-        }
+        work.printTaskList();
     }
 }
