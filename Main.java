@@ -7,9 +7,7 @@ public class Main {
         System.out.println("*******************************");
         System.out.println();
         
-        User user1 = new User();
         TaskList work = new TaskList();
-
 
         work.addTask(new Task("run"));
         work.addTask(new Task("run2"));
