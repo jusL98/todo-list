@@ -52,7 +52,7 @@ public class TaskList {
                 System.out.println();
                 System.out.println(Deadline.getFormattedDate(taskList.get(i).getDeadline()));
             }
-            System.out.println(" -" + taskList.get(i));
+            System.out.println("  - " + taskList.get(i));
         }
     }
 }

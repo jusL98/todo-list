@@ -3,7 +3,6 @@ import java.util.Date;
 public class Task {
     private String task;
     private Date deadline;
-    private String category;
     private boolean isCompleted;
 
     public Task(String task) {
@@ -26,14 +25,6 @@ public class Task {
         this.task = task;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public boolean getCompletion() {
         return isCompleted;
     }
@@ -51,6 +42,6 @@ public class Task {
     }
 
     public String toString() {
-        return task + " | " + deadline + " | " + category + " | " + isCompleted;
+        return task + " | " + Deadline.getFormattedDate(deadline) + " | " + isCompleted;
     }
 }
