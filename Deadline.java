@@ -36,7 +36,7 @@ public class Deadline {
         return date;
     }
 
-    public String getFormattedDate(){
+    public static String getFormattedDate(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy"); // MM for number, MMM for word
         String fDate = simpleDateFormat.format(date);
         return fDate;
@@ -59,7 +59,7 @@ public class Deadline {
         Deadline d1 = new Deadline();
 
         System.out.println(d1.getDate());
-        System.out.println(d1.getFormattedDate());
+        System.out.println(getFormattedDate(d1.getDate()));
 
         Date test = Deadline.parseDate("Feb 15, 2125");
 
