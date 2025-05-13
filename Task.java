@@ -42,6 +42,8 @@ public class Task {
     }
 
     public String toString() {
-        return task + " | " + Deadline.getFormattedDate(deadline) + " | " + isCompleted;
+        //return task + " | " + Deadline.getFormattedDate(deadline) + " | " + isCompleted;
+        //return task + " | " + isCompleted;
+        return task;
     }
 }

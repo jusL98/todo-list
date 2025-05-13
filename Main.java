@@ -14,6 +14,13 @@ public class Main {
         work.addTask(new Task("make dinner"));
         work.addTask(new Task("go for jog"));
 
+        work.completeTask(2);
+        work.completeTask(4);
+        
+        work.completeTask(2);
+
         work.printTaskList();
+
+        System.out.println(work.getCompletedTaskList());
     }
 }
