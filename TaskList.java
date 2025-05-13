@@ -31,7 +31,7 @@ public class TaskList {
         for (int i = 0; i < taskList.size() - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < taskList.size(); j++) {
-                if (taskList.get(j).getDeadline() < taskList.get(minIndex).getDeadline()) {
+                if (taskList.get(j).getDeadline().before(taskList.get(minIndex).getDeadline())){
                     minIndex = j;
                 }
             }
@@ -48,7 +48,7 @@ public class TaskList {
         System.out.println(" -" + taskList.get(0));
 
         for(int i = 1; i < taskList.size(); i++){
-            if(taskList.get(i).getDeadline() != taskList.get(i-1).getDeadline()){
+            if(taskList.get(i).getDeadline() != taskList.get(i-1).getDeadline() && taskList.get(i).getDeadline().compareTo(taskList.get(i-1).getDeadline()) != 0){
                 System.out.println();
                 System.out.println(taskList.get(i).getDeadline());
             }
