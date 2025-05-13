@@ -1,5 +1,10 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("*******************************");
         System.out.println("          TODO - LIST          ");
         System.out.println("*******************************");
@@ -14,13 +19,23 @@ public class Main {
         work.addTask(new Task("make dinner"));
         work.addTask(new Task("go for jog"));
 
-        work.completeTask(2);
-        work.completeTask(4);
-        
-        work.completeTask(2);
-
         work.printTaskList();
 
-        System.out.println(work.getCompletedTaskList());
+        // Writing the TaskList object to a file
+        FileOutputStream fileOutputStream = new FileOutputStream("test.txt");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        objectOutputStream.writeObject(work);
+        objectOutputStream.close();
+        fileOutputStream.close();
+
+        // Reading the TaskList object from the file
+        FileInputStream fileInputStream = new FileInputStream("test.txt");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        TaskList readWork = (TaskList) objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+
+        System.out.println("\n\nRead TaskList from file:");
+        readWork.printTaskList();
     }
 }

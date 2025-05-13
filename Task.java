@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class Task {
+public class Task implements Serializable {
     private String task;
     private Date deadline;
     private boolean isCompleted;
@@ -42,8 +43,9 @@ public class Task {
     }
 
     public String toString() {
-        //return task + " | " + Deadline.getFormattedDate(deadline) + " | " + isCompleted;
-        //return task + " | " + isCompleted;
+        // return task + " | " + Deadline.getFormattedDate(deadline) + " | " +
+        // isCompleted;
+        // return task + " | " + isCompleted;
         return task;
     }
 }
