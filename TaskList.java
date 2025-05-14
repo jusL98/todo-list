@@ -2,12 +2,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TaskList implements Serializable {
+    private String taskListName;
     private ArrayList<Task> taskList;
     private ArrayList<Task> completedTasks;
 
-    public TaskList() {
+    public TaskList(String taskListName) {
+        this.taskListName = taskListName;
         taskList = new ArrayList<Task>();
         completedTasks = new ArrayList<Task>();
+    }
+
+    public String getTaskListName(){
+        return taskListName;
     }
 
     // Action #1 - Get Task List
