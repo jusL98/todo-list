@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TaskList implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String taskListName;
     private ArrayList<Task> taskList;
     private ArrayList<Task> completedTasks;
@@ -12,7 +13,7 @@ public class TaskList implements Serializable {
         completedTasks = new ArrayList<Task>();
     }
 
-    public String getTaskListName(){
+    public String getTaskListName() {
         return taskListName;
     }
 
@@ -48,7 +49,7 @@ public class TaskList implements Serializable {
         for (int i = 0; i < taskList.size() - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < taskList.size(); j++) {
-                if (taskList.get(j).getDeadline().before(taskList.get(minIndex).getDeadline())){
+                if (taskList.get(j).getDeadline().before(taskList.get(minIndex).getDeadline())) {
                     minIndex = j;
                 }
             }
@@ -60,12 +61,13 @@ public class TaskList implements Serializable {
 
     public void printTaskList() {
         orderTaskList();
-        
+
         System.out.println(Deadline.getFormattedDate(taskList.get(0).getDeadline()));
         System.out.println("  - " + taskList.get(0));
 
-        for(int i = 1; i < taskList.size(); i++){
-            if(taskList.get(i).getDeadline() != taskList.get(i-1).getDeadline() && taskList.get(i).getDeadline().compareTo(taskList.get(i-1).getDeadline()) != 0){
+        for (int i = 1; i < taskList.size(); i++) {
+            if (taskList.get(i).getDeadline() != taskList.get(i - 1).getDeadline()
+                    && taskList.get(i).getDeadline().compareTo(taskList.get(i - 1).getDeadline()) != 0) {
                 System.out.println();
                 System.out.println(Deadline.getFormattedDate(taskList.get(i).getDeadline()));
             }

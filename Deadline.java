@@ -61,7 +61,7 @@ public class Deadline implements Serializable {
         System.out.println(d1.getDate());
         System.out.println(getFormattedDate(d1.getDate()));
 
-        Date test = Deadline.parseDate("Feb 15, 2125");
+        Date test = Deadline.parseDate("Feb 15, 2025");
 
         System.out.println(test);
     }
