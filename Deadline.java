@@ -31,6 +31,18 @@ public class Deadline implements Serializable {
         calendar.set(this.year, this.month, this.day, 0, 0, 0);
     }
 
+    public Deadline(Date date) {
+        calendar = Calendar.getInstance();
+
+        calendar.setTime(date);
+        this.month = calendar.get(Calendar.MONTH);
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
+        this.year = calendar.get(Calendar.YEAR);
+
+        calendar.set(this.year, this.month, this.day, 0, 0, 0);
+    }
+
+
     public Date getDate() {
         date = calendar.getTime();
         return date;
@@ -49,7 +61,8 @@ public class Deadline implements Serializable {
         try {
             date2 = simpleDateFormat.parse(date);
         } catch (ParseException e) {
-            System.err.println("Error parsing date: " + e.getMessage());
+            //System.err.println("Error parsing date: " + e.getMessage());
+            return null;
         }
 
         return date2;

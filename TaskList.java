@@ -62,14 +62,22 @@ public class TaskList implements Serializable {
     public void printTaskList() {
         orderTaskList();
 
-        System.out.println(Deadline.getFormattedDate(taskList.get(0).getDeadline()));
+        if (taskList.isEmpty()) {
+            System.out.println("No tasks in this list.");
+            return;
+        }
+
+        // Use formatted date string for grouping
+        String prevDateStr = Deadline.getFormattedDate(taskList.get(0).getDeadline());
+        System.out.println(prevDateStr);
         System.out.println("  - " + taskList.get(0));
 
         for (int i = 1; i < taskList.size(); i++) {
-            if (taskList.get(i).getDeadline() != taskList.get(i - 1).getDeadline()
-                    && taskList.get(i).getDeadline().compareTo(taskList.get(i - 1).getDeadline()) != 0) {
+            String currDateStr = Deadline.getFormattedDate(taskList.get(i).getDeadline());
+            if (!currDateStr.equals(prevDateStr)) {
                 System.out.println();
-                System.out.println(Deadline.getFormattedDate(taskList.get(i).getDeadline()));
+                System.out.println(currDateStr);
+                prevDateStr = currDateStr;
             }
             System.out.println("  - " + taskList.get(i));
         }
