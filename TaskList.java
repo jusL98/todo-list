@@ -67,7 +67,6 @@ public class TaskList implements Serializable {
             return;
         }
 
-        // Use formatted date string for grouping
         String prevDateStr = Deadline.getFormattedDate(taskList.get(0).getDeadline());
         System.out.println(prevDateStr);
         System.out.println("  - " + taskList.get(0));

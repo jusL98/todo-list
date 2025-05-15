@@ -35,20 +35,14 @@ public class Main {
             switch (choice) {
                 case -1:
                     break;
-                
+
                 case 1:
                     int taskListIndex = existingTaskListMenu(scanner, mainUser);
                     loadTaskList(scanner, taskListIndex, mainUser);
                     break;
 
                 case 2:
-                    System.out.print("Enter the name of the new TaskList: ");
-                    String newTaskListName = scanner.nextLine();
-                    TaskList newTaskList = new TaskList(newTaskListName);
-                    mainUser.addTaskList(newTaskList);
-                    System.out.println("TaskList '" + newTaskListName + "' created.");
-                    mainUser.saveUserData(userDataFile);
-
+                    createNewTaskListMenu(scanner, mainUser);
                     break;
 
                 case 3:
@@ -70,7 +64,7 @@ public class Main {
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
                 scanner.nextLine();
-                if (choice == -1){
+                if (choice == -1) {
                     System.out.println("Selection cancelled.");
                     break;
                 }
@@ -115,6 +109,12 @@ public class Main {
 
         if (mainUser.getUserTaskLists().isEmpty()) {
             System.out.println("No TaskLists available to load.");
+
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+            }
+            
             return -1;
         }
 
@@ -156,13 +156,26 @@ public class Main {
             System.out.println();
 
             if (selectedTaskList.getTaskList().isEmpty()) {
-                System.out.println("The TaskList is empty.");
+                System.out.println("[The Tasklist is empty.]");
             } else {
                 selectedTaskList.printTaskList();
             }
 
-            int action = taskListActionMenu(scanner);
-            if(action != -1){
+            // Task List Action Menu
+            System.out.println();
+
+            System.out.println("Choose an action:");
+            System.out.println("  1. Add a new task");
+            System.out.println("  2. Delete a task");
+            System.out.println("  3. Complete a task");
+            System.out.println("  4. View completed tasks");
+            System.out.println("  5. DELETE TASKLIST");
+            System.out.println("  6. RETURN TO MAIN MENU");
+
+            System.out.print("Your selection: ");
+            int action = getValidatedSelection(scanner, 6);
+
+            if (action != -1) {
                 System.out.println();
             }
 
@@ -206,7 +219,7 @@ public class Main {
 
                     System.out.print("Task to delete: ");
                     int delIndex = getValidatedSelection(scanner, selectedTaskList.getTaskList().size()) - 1;
-                    if(delIndex == -2) {
+                    if (delIndex == -2) {
                         break;
                     }
                     selectedTaskList.deleteTask(delIndex);
@@ -270,20 +283,62 @@ public class Main {
         }
     }
 
-    public static int taskListActionMenu(Scanner scanner) {
+    public static void createNewTaskListMenu(Scanner scanner, User mainUser) {
+        System.out.println();
+        System.out.println("--------------------------------");
         System.out.println();
 
-        System.out.println("Choose an action:");
-        System.out.println("  1. Add a new task");
-        System.out.println("  2. Delete a task");
-        System.out.println("  3. Complete a task");
-        System.out.println("  4. View completed tasks");
-        System.out.println("  5. DELETE TASKLIST");
-        System.out.println("  6. RETURN TO MAIN MENU");
+        System.out.print("Enter the name of the new tasklist: ");
+        String newTaskListName = scanner.nextLine();
 
-        System.out.print("Your selection: ");
-        int choice = getValidatedSelection(scanner, 6);
+        if (newTaskListName.trim().isEmpty()) {
+            System.out.println("TaskList name cannot be empty. TaskList not created.");
 
-        return choice;
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+            }
+
+            return;
+        }
+        if (mainUser.getUserTaskLists().stream()
+                .anyMatch(tl -> tl.getTaskListName().equalsIgnoreCase(newTaskListName))) {
+            System.out.println("TaskList with this name already exists. TaskList not created.");
+
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+            }
+
+            return;
+        }
+        if (newTaskListName.trim().equals("-1")) {
+            System.out.println("Tasklist creation cancelled.");
+
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+            }
+
+            return;
+        }
+
+        TaskList newTaskList = new TaskList(newTaskListName);
+        mainUser.addTaskList(newTaskList);
+        System.out.println("TaskList '" + newTaskListName + "' created.");
+        
+        String userDataFile = "userData.txt";
+        try {
+            mainUser.saveUserData(userDataFile);
+        } catch (IOException e) {
+            System.out.println("Error saving user data: " + e.getMessage());
+        }
+
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+        }
+
+        loadTaskList(scanner, mainUser.getUserTaskLists().size() - 1, mainUser);
     }
 }
