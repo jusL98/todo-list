@@ -5,7 +5,7 @@
 This program is a simple terminal based todo list application that I created to practice OOP concepts like inheritance, abstraction, polymorphism and encapsulation as well as dates and times in Java. Individuals can create a user which contains task lists consisting of tasks with properties like task, deadline and completion status.
 
 <p align="left">
-   <img width="600" alt="image" src="https://github.com/user-attachments/assets/bca85f09-f24d-4657-92fd-23e8d755b051"/>
+   <img width="600" alt="image" src="https://github.com/user-attachments/assets/2825a5ca-f426-4cf4-b754-9bc2ef2f138a"/>
 </p>
 
 ## Description
@@ -13,6 +13,8 @@ This program is a simple terminal based todo list application that I created to 
 Todo List features a clean and intuitive terminal based UI that users can interact with to create a user, create task lists and fill the task list with tasks.
 
 The app contains comprehensive error handling for invalid inputs and can smartly parse dates to be used for task deadlines. Task lists are then ordered and consistently updated in order of task deadlines from soonest to latest. Tasks and task lists can easily be created, deleted and marked completed.
+
+User data is saved in `userData.txt` data file as binary with Serializable to store User object state.
 
 ## Built With
 
@@ -86,9 +88,13 @@ To install the Connect 4 game, follow these steps:
 ## Project Structure
 
 ```
-├── file-sorter/
-│   ├── main.py                        # contains the main program code and logic
-│   └── config.json                    # contains configuration settings
+├── todo-list/
+│   ├── Main.java                      // contains the main program code, logic and screen flow
+│   ├── User.java                      // contains the class defining a user
+│   ├── TaskList.java                  // contains the class defining a task list
+│   ├── Task.java                      // contains the class defining an individual task
+│   ├── Deadline.java                  // contains the class defining an deadline (object used in task)
+│   └── userData.txt                   // stores user data to be loaded next time app is opened
 ```
 
 ## Acknowledgements
