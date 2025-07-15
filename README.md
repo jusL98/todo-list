@@ -14,7 +14,7 @@ Todo List features a clean and intuitive terminal based UI that users can intera
 
 The app contains comprehensive error handling for invalid inputs and can smartly parse dates to be used for task deadlines. Task lists are then ordered and consistently updated in order of task deadlines from soonest to latest. Tasks and task lists can easily be created, deleted and marked completed.
 
-User data is saved in `userData.txt` data file as binary with Serializable to store User object state.
+User data is saved in the `userData.txt` data file as binary with Serializable to store User object state.
 
 ## Built With
 
